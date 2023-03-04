@@ -1,0 +1,51 @@
+.Post{
+    margin-top: 20px;
+    border:1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    .heading{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 60px;
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    .content{
+        height: 300px;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .footer{
+        padding: 20px;
+
+        .like{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .icon{
+                font-size: 1.5rem;
+            }
+        }
+
+        .caption{
+            margin-top: 12px;
+        }
+
+        .time-ago{
+            margin-top: 12px;
+            color: #aaa;
+        }
+
+    }
+
+
+}

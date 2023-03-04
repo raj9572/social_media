@@ -1,0 +1,30 @@
+.Feed{
+    // height: calc(100vh - 60px);
+    margin-top: 60px;
+
+    .container{
+        display: flex;
+        gap: 20px;
+        overflow: hidden;
+
+    }
+    .left-part{
+        flex:2;
+        overflow-y: scroll;
+        
+    }
+    .right-part{
+        flex:1;
+        margin-top: 20px;
+        overflow: hidden;
+        
+    }
+
+    .suggestion{
+        margin-top: 20px;
+    }
+
+    .title{
+        margin-bottom: 12px;
+    }
+}
