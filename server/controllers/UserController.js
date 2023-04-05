@@ -6,6 +6,7 @@ const cloudinary = require('cloudinary').v2;
 
 const followOrUnfollowUserController = async (req, res) => {
     try {
+        console.log('follow ueser')
         const { userIdFollow } = req.body;
         const curUserId = req._id
 
@@ -34,7 +35,7 @@ const followOrUnfollowUserController = async (req, res) => {
 
         await userToFollow.save()
         await curUser.save()
-
+       console.log('userToFollow',userToFollow)
         return res.send(success(200, {user:userToFollow}))
     } catch (e) {
         res.send(error(500, e.message))

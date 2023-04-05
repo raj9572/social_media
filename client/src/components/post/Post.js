@@ -1,6 +1,6 @@
 import React from 'react'
 import Avatar from '../Avatar/Avatar'
-import backgroundImg from '../../assests/backgroundImg.jpeg'
+// import backgroundImg from '../../assests/backgroundImg.jpeg'
 import './post.scss'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
@@ -20,6 +20,7 @@ const Post = ({ post }) => {
     dispatch(LikeAndUnLikePost({
       postId: id
     }))
+    
   }
   return (
     <div className='Post'>
@@ -28,7 +29,7 @@ const Post = ({ post }) => {
         <h4>{post?.owner?.name}</h4>
       </div>
       <div className="content">
-        <img src={post?.image.url} alt="" />
+        <img src={post?.image?.url} alt="" />
       </div>
       <div className="footer">
         <div className="like" onClick={() => handlePostLiked(post._id)}>

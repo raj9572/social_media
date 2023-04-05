@@ -57,15 +57,16 @@ axiosClient.interceptors.response.use(
                 withCredentials:true,
             }).get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`)
 
-            console.log('response from backend', response)
-            if (response.status === 'ok') {
-                setItem(KEY_ACCESS_TOKEN,response.result.accessToken)
-                originalRequest.headers['Authorization'] =`Bearer ${response.result.accessToken}`
+            console.log('response from backend 2', response)
+            if (response.data.status === 'ok') {
+                setItem(KEY_ACCESS_TOKEN,response.data.result.accessToken)
+                originalRequest.headers['Authorization'] =`Bearer ${response.data.result.accessToken}`
+                console.log('original Request',originalRequest)
                 return axios(originalRequest)
-            }else{
+            }else {
                 removeItem(KEY_ACCESS_TOKEN);
-                window.location.replace('/login', "_self")
-                return Promise.reject(error)
+                window.location.replace("/login", "_self");
+                return Promise.reject(error);
             }
         }
         return Promise.reject(error)

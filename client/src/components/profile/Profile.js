@@ -42,7 +42,7 @@ const Profile = () => {
         <div className="right-part">
           <div className="profile-card">
             <img className='user-img' src={userProfile?.avatar?.url} alt="user" />
-            <h3 className='user-name'>{userProfile.name}</h3>
+            <h3 className='user-name'>{userProfile?.name}</h3>
             <p>{userProfile?.bio}</p>
             <div className="follwer-info">
               <h4>{`${userProfile?.followers?.length} follower`}</h4>

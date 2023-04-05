@@ -50,7 +50,7 @@ const feedSlice = createSlice({
                 const post = action.payload;
                 const index = state.feedData?.posts?.findIndex(item => item._id === post._id);
                 
-                if (index != undefined && index != -1) {
+                if (index !== undefined && index !== -1) {
                     state.feedData.posts[index] = post;
                 }
 
@@ -59,7 +59,7 @@ const feedSlice = createSlice({
                 const user = action.payload
                 const index = state?.feedData?.followings.findIndex(item=>item._id === user._id)
                 console.log(index)
-                if( index != -1){
+                if( index !== -1){
                     state.feedData?.followings.splice(index,1);
                 }else{
                     console.log(user)

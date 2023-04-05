@@ -1,9 +1,9 @@
 // import React, { useRef, useState } from 'react'
 import React from 'react'
 import { AiOutlineLogout } from 'react-icons/ai'
-import {  useDispatch, useSelector } from 'react-redux'
+import {   useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { setLoading } from '../../redux/Slice/appConfigSlice.js'
+import { } from '../../redux/Slice/appConfigSlice.js'
 import { axiosClient } from '../../Utils/axiosClient.js'
 import { KEY_ACCESS_TOKEN, removeItem } from '../../Utils/localStorageManager.js'
 // import { setLoading } from '../../redux/Slice/appConfigSlice.js'
@@ -16,7 +16,6 @@ const Navbar = () => {
   // const [loading,setLoading] = useState(false)
   const navigate = useNavigate()
 
-  const dispatch = useDispatch()
   const myProfile = useSelector(state=>state.appConfigReducer.myProfile)
   
 

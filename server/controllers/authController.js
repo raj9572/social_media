@@ -26,7 +26,7 @@ const singupController = async (req, res) => {
             name,
             email,
             password: hashPassword,
-            bio:'default'
+            bio: 'default'
 
         })
 
@@ -101,6 +101,7 @@ const refreshAccessTokenController = async (req, res) => {
         const _id = token._id
         const accessToken = generateAccessToken({ _id })
         // return res.status(201).json({ accessToken })
+        console.log('access token', accessToken)
         return res.send(success(201, { accessToken }))
     } catch (err) {
         // return res.status(401).send("Invalid access key")
@@ -110,15 +111,15 @@ const refreshAccessTokenController = async (req, res) => {
 }
 
 
-const logoutController = async(req,res)=>{
+const logoutController = async (req, res) => {
     try {
         res.clearCookie('jwt', {
             httpOnly: true,
             secure: true
         })
-        return res.send(success(200,'user logged out'))
+        return res.send(success(200, 'user logged out'))
     } catch (e) {
-        return res.send(error(500,e.message))
+        return res.send(error(500, e.message))
     }
 }
 
@@ -133,8 +134,9 @@ const logoutController = async(req,res)=>{
 
 const generateAccessToken = (data) => {
     const token = jwt.sign(data, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-        expiresIn: '1d'
+        expiresIn: '10m'
     })
+    console.log('token', token)
     return token
 }
 
@@ -145,4 +147,4 @@ const generateRefreshToken = (data) => {
     return token
 }
 
-module.exports = { singupController, loginController, refreshAccessTokenController,logoutController }
+module.exports = { singupController, loginController, refreshAccessTokenController, logoutController }
