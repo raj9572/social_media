@@ -6,6 +6,7 @@
 .pnp.js
 
 # env fiile
+./env
 .env
 .env.development.local
 .env.test.local
