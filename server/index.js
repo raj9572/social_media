@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const cloudinary = require('cloudinary').v2;
 const bodyParser = require('body-parser')
+const { estimatedDocumentCount } = require('./models/Comment')
 
 // middlewares
 app.use(express.json({ limit: '50mb' }));
@@ -19,6 +20,11 @@ app.use(cors({
   credentials: true,
   origin: 'http://localhost:3000'
 }))
+
+// check deployment is right 
+app.get("/book",(req,res)=>{
+   return res.json({books:"this is book"})
+})
 
 // cloudinary 
 cloudinary.config({

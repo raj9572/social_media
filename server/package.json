@@ -22,6 +22,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.0",
     "morgan": "^1.10.0",
+    "nodemon": "^3.1.0",
     "time-ago": "^0.2.1"
   }
 }
