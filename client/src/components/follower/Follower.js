@@ -16,7 +16,7 @@ const Follower = ({user}) => {
    
     setIsFollowing(feedData.followings.find(item=>item._id === user._id))
 
- },[feedData])
+ },[feedData,dispatch])
 
  const handleUserFollow=()=>{
   dispatch(followAndUnFollowUser({

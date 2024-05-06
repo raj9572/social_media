@@ -13,6 +13,7 @@ const UpdateProfile = () => {
   const [userImg,setUserImg]= useState('')
 
   useEffect(()=>{
+      
        setName(myProfile?.name || '');
        setBio(myProfile?.bio || '')
        setUserImg(myProfile?.avatar?.url)

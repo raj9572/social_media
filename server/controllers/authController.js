@@ -6,7 +6,7 @@ const { success, error } = require('../Utils/responseWrapper')
 
 const singupController = async (req, res) => {
     try {
-        console.log(req.body)
+        // console.log(req.body)
         const { email, password, name } = req.body
         if (!email || !password || !name) {
             // return res.status(400).send('All field are required')
@@ -19,7 +19,6 @@ const singupController = async (req, res) => {
         }
         const salt = await bcrypt.genSalt(10)
         const hashPassword = await bcrypt.hash(password, salt)
-        console.log(hashPassword)
 
         const user = await User.create({
 
@@ -101,7 +100,6 @@ const refreshAccessTokenController = async (req, res) => {
         const _id = token._id
         const accessToken = generateAccessToken({ _id })
         // return res.status(201).json({ accessToken })
-        console.log('access token', accessToken)
         return res.send(success(201, { accessToken }))
     } catch (err) {
         // return res.status(401).send("Invalid access key")
@@ -134,9 +132,8 @@ const logoutController = async (req, res) => {
 
 const generateAccessToken = (data) => {
     const token = jwt.sign(data, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-        expiresIn: '10m'
+        expiresIn: '1d'
     })
-    console.log('token', token)
     return token
 }
 

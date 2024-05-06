@@ -25,14 +25,14 @@ const Navbar = () => {
         removeItem(KEY_ACCESS_TOKEN)
         navigate('/login');
      } catch (error) {
-       console.log(error)
+      //  console.log(error)
      }
   }
 
   return (
     <div className='Navbar'>
       <div className="container">
-        <h2 className="banner hover-link" onClick={()=>navigate("/")}> Social Media</h2>
+        <h2 className="banner hover-link" onClick={()=>navigate("/")}> POSTGRAM</h2>
         <div className="right-side">
           <div className="profile hover-link" onClick={()=>navigate(`profile/${myProfile._id}`)}>
             <Avatar src={myProfile?.avatar?.url}/>

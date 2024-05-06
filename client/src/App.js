@@ -12,6 +12,7 @@ import { useEffect, useRef } from 'react';
 import LoadingBar from 'react-top-loading-bar'
 import OnlyIfNotLogged from './components/OnlyIfNotLogged';
 import toast, { Toaster } from 'react-hot-toast'
+import ViewPostDetails from './components/ViewPostDetails/ViewPostDetails';
 export const TOAST_SUCCESS = 'toast_success'
 export const TOAST_FAILURE = 'toast_failure'
 
@@ -56,6 +57,7 @@ function App() {
             <Route path="/" element={<Feed />}></Route>
             <Route path="/profile/:userId" element={<Profile />}></Route>
             <Route path="/updateProfile" element={<UpdateProfile />}></Route>
+            <Route path="/viewpostdetails/:postId" element={<ViewPostDetails />}></Route>
           </Route>
         </Route>
 

@@ -8,17 +8,13 @@ module.exports = async (req, res, next) => {
     }
     const accessToken = req.headers.authorization.split(" ")[1]
     try {
-        console.log('expiredate')
         const token = jwt.verify(accessToken, process.env.ACCESS_TOKEN_PRIVATE_KEY)
-        console.log('expiredate', token)
         req._id = token._id
 
         const user = await User.findById(req._id)
-        // console.log('user',user)
         if (!user) {
             return res.send(error(404, 'User not found'))
         }
-        // console.log(req._id)
         next()
     } catch (err) {
         // return res.status(401).send("Invalid access key")

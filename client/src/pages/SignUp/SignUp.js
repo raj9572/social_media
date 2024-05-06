@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { axiosClient } from '../../Utils/axiosClient'
 import './signUp.scss'
 const SignUp = () => {
   const [name,setName ] = useState('')
   const [email,setEmail ] = useState('')
   const [password,setPassword ] = useState('')
+  const navigate = useNavigate()
   
   const handleSubmit=async(e)=>{
      e.preventDefault();
@@ -15,9 +16,12 @@ const SignUp = () => {
         email,
         password
        }) 
-       console.log('result froms ignup',result)
+      //  console.log('result froms ignup',result)
+       if(result.status === "ok") {
+        navigate("/login")
+       }
      } catch (error) {
-      console.log(error)
+      // console.log(error)
      }
 
   }

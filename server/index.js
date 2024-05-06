@@ -40,7 +40,7 @@ app.use("/user", require('./routers/UserRouter'))
 
 
 app.listen(port, () => {
-  connectToMongo()
+    connectToMongo()
   console.log(`Example app listening on port ${port}`)
 })
 

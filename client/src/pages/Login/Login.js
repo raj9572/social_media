@@ -11,17 +11,18 @@ const Login = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault()
-    console.log(email,password)
+    // console.log(email,password)
    try {
     const response = await axiosClient.post('/auth/login',{
       email,
       password
     })
+    // console.log('response', response)
     setItem(KEY_ACCESS_TOKEN,response.result.accessToken)
     navigate('/')
 
    } catch (error) {
-    console.log('error',error)
+    // console.log('error',error)
    }
 
     

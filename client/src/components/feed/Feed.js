@@ -7,6 +7,7 @@ import './feed.scss'
 const Feed = () => {
   const dispatch = useDispatch();
   const feedData = useSelector(state=>state.feedDataReducer.feedData)
+  // console.log('feed data', feedData)
 
   useEffect(()=>{
     dispatch(getFeedData())

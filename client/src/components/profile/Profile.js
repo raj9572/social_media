@@ -25,15 +25,18 @@ const Profile = () => {
     setIsFollowing(feedData?.followings?.find(item=>item._id === params.userId))
   }, [myProfile,params.userId,feedData])
 
-
+//  console.log('get user profile', userProfile)
+//  console.log('get my profile', myProfile.followers)
   const handleUserFollow = ()=>{
     dispatch(followAndUnFollowUser({
       userIdFollow:params.userId
     }))
   }
 
+  
+
   return (
-    <div className='Profile'>
+     <div className='Profile'>
       <div className="container">
         <div className="left-part">
          {isMyProfile && <CreatePost />}
@@ -53,8 +56,9 @@ const Profile = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> 
   )
+
 }
 
 export default Profile

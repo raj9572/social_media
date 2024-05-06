@@ -1,7 +1,9 @@
 const Post = require('../models/Post')
 const User = require('../models/User')
+const CommentModel  = require('../models/Comment')
 const { error, success } = require('../Utils/responseWrapper');
 const mapPostOutput = require('../Utils/Utils');
+const Comment = require('../models/Comment');
 const cloudinary = require('cloudinary').v2;
 
 
@@ -22,7 +24,6 @@ const createPostController = async (req, res) => {
        
 
         const user = await User.findById(req._id)
-        // console.log(user)
 
         const post = await Post.create({
             owner,
@@ -33,7 +34,6 @@ const createPostController = async (req, res) => {
             }
         })
 
-        // console.log(user, post._id)
         user.posts.push(post._id);
         await user.save();
 
@@ -127,10 +127,81 @@ const deletePost = async(req,res)=>{
     }
 }
 
+const postCommentController = async (req, res) => {
+    try {
+        const { commentText, postId } = req.body
+        if (!commentText) {
+            return res.send(Error(400, "please text in comment"))
+        }
+
+        const post = await Post.findById(postId)
+
+        const comment = await CommentModel.create({
+            commentText,
+            postId,
+            userId: req._id
+        })
+
+        post.comments.push(comment._id)
+        await post.save()
+
+        return res.send(success(200, "you are commented on post"))
+
+
+    } catch (error) {
+        return res.send(Error(500, error.message))
+    }
+
+}
+
+
+const getPostDetails = async(req,res)=>{
+    
+    try {
+        const {postId} = req.params
+    if(!postId){
+        return res.send(Error(404, "postId not found"))
+    }
+
+    const post = await Post.findById(postId).populate('owner')
+   
+    if(!post){
+        return res.send(Error(404, "postId not found"))
+    }
+    
+    return res.send(success(200, {post:mapPostOutput(post,req._id)}))
+
+    } catch (error) {
+        return res.send(Error(500, error.message))
+    
+    }
+
+}
+const getPostAllComments = async(req,res)=>{
+    
+    try {
+        const {postId} = req.params
+
+    const AllComment = await Comment.find({postId}).populate('userId')
+   
+    return res.send(success(200, {comments:AllComment}))
+
+    } catch (error) {
+        return res.send(Error(500, error.message))
+    
+    }
+
+}
+
+ 
+
 
 module.exports = {
      createPostController,
      LikeAndUnlikePost,
      updatePostController,
-     deletePost
+     deletePost,
+     postCommentController,
+     getPostDetails,
+     getPostAllComments
      }

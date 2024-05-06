@@ -19,7 +19,9 @@ export const getMYInfo = createAsyncThunk('user/getmyinfo', async (body, thunkAP
 export const updateMyProfile = createAsyncThunk('user/', async (body, thunkAPI) => {
     try {
         const response = await axiosClient.put('/user/', body)
+        window.location.reload()
         return response.result;
+
 
 
     } catch (error) {
