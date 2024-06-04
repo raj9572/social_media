@@ -64,23 +64,25 @@ const loginController = async (req, res) => {
 
 
 
-
+       console.log('aaya',isMatch)
         const accessToken = generateAccessToken({ _id: user._id, email: user.email })
         const refreshToken = generateRefreshToken({ _id: user._id, email: user.email })
 
-
+        console.log('refreshToken',refreshToken)
+        console.log('accessToken',accessToken)
         res.cookie('jwt', refreshToken, {
             httpOnly: true,
             secure: true
         })
-
+        console.log('aaya ')
         // return res.json({ accessToken });
         return res.send(success(200, { accessToken }))
 
 
     } catch (err) {
         // res.status(400).send({ error })
-        return res.send(error(500, 'Internal server error in login'))
+        console.log(err)
+        return res.send(error(500, error))
     }
 }
 

@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(()=>{
       dispatch(getMYInfo())
-        
+        // eslint-disable-next-line
     },[])
 
     // async function fetchData(){

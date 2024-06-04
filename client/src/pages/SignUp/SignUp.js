@@ -16,12 +16,11 @@ const SignUp = () => {
         email,
         password
        }) 
-      //  console.log('result froms ignup',result)
        if(result.status === "ok") {
         navigate("/login")
        }
      } catch (error) {
-      // console.log(error)
+      
      }
 
   }

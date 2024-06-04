@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Post from '../post/Post'
 import './Profile.scss'
-import userImg from '../../assests/user.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import CreatePost from '../CreatePost/CreatePost'
 import { useDispatch, useSelector } from 'react-redux'
@@ -23,6 +22,7 @@ const Profile = () => {
     dispatch(getUserProfile({ userId: params.userId }))
     setMyProfile(myProfile?._id === params.userId)
     setIsFollowing(feedData?.followings?.find(item=>item._id === params.userId))
+    // eslint-disable-next-line
   }, [myProfile,params.userId,feedData])
 
 //  console.log('get user profile', userProfile)

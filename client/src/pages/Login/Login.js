@@ -17,10 +17,8 @@ const Login = () => {
       email,
       password
     })
-    // console.log('response', response)
     setItem(KEY_ACCESS_TOKEN,response.result.accessToken)
     navigate('/')
-
    } catch (error) {
     // console.log('error',error)
    }
