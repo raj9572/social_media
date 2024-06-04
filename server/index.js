@@ -17,8 +17,8 @@ app.use(express.urlencoded({ limit: '50mb' }));
 app.use(morgan('common'))
 app.use(cookieParser())
 app.use(cors({
-  credentials: true,
-  origin: 'https://social-media-client-blue-ten.vercel.app'
+  origin: ['https://social-media-client-blue-ten.vercel.app'],
+  credentials: true
 }))
 
 // check deployment is right 
