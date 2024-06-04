@@ -22,7 +22,7 @@ app.use(cors({
 }))
 
 // check deployment is right 
-app.get("/book",(req,res)=>{
+app.get("/",(req,res)=>{
    return res.json({books:"this is book"})
 })
 
