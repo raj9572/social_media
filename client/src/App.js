@@ -43,6 +43,8 @@ function App() {
         toast.error(toastData.message)
         break;
 
+        default : return
+
 
     }
   }, [toastData])
