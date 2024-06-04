@@ -21,9 +21,10 @@ app.use(cors({
   credentials: true
 }))
 
+
 // check deployment is right 
-app.get("/",(req,res)=>{
-   return res.json({books:"this is book"})
+app.get("/", (req, res) => {
+  return res.json({ books: "this is book" })
 })
 
 // cloudinary 
@@ -46,7 +47,7 @@ app.use("/user", require('./routers/UserRouter'))
 
 
 app.listen(port, () => {
-    connectToMongo()
+  connectToMongo()
   console.log(`Example app listening on port ${port}`)
 })
 
