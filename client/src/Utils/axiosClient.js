@@ -57,6 +57,7 @@ axiosClient.interceptors.response.use(
             }).get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`)
 
             if (response.data.status === 'ok') {
+                console.log("'token'",response.data.result.accessToken)
                 setItem(KEY_ACCESS_TOKEN,response.data.result.accessToken)
                 originalRequest.headers['Authorization'] =`Bearer ${response.data.result.accessToken}`
                 return axios(originalRequest)

@@ -5,7 +5,8 @@ export const getMYInfo = createAsyncThunk('user/getmyinfo', async (body, thunkAP
 
     try {
         const response = await axiosClient.get('/user/getmyinfo')
-        return response.result;
+        console.log('response',response)
+        return response?.result;
 
 
     } catch (error) {
@@ -51,10 +52,10 @@ const appConfigSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getMYInfo.fulfilled, (state, action) => {
-                state.myProfile = action.payload.user
+                state.myProfile = action?.payload?.user
             })
             .addCase(updateMyProfile.fulfilled, (state, action) => {
-                state.myProfile = action.payload.user
+                state.myProfile = action?.payload?.user
             })
     }
 })

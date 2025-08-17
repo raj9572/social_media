@@ -16,8 +16,9 @@ app.use(express.urlencoded({ limit: '50mb' }));
 
 app.use(morgan('common'))
 app.use(cookieParser())
+// https://social-media-client-blue-ten.vercel.app/
 app.use(cors({
-  origin: ['https://social-media-client-blue-ten.vercel.app'],
+  origin: ['http://localhost:3000',"https://social-media-zl52.onrender.com/"],
   credentials: true
 }))
 
