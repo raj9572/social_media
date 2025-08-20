@@ -4,6 +4,7 @@ import { getFeedData } from '../../redux/Slice/feedSlice'
 import Follower from '../follower/Follower'
 import Post from '../post/Post'
 import './feed.scss'
+import Skeleton from '../skeleton/Skeleton'
 const Feed = () => {
   const dispatch = useDispatch();
   const feedData = useSelector(state=>state.feedDataReducer.feedData)
@@ -17,7 +18,9 @@ const Feed = () => {
     <div className='Feed'>
       <div className="container">
         <div className="left-part">
-          {feedData?.posts?.map(post=>  <Post key={post._id} post={post} />)}
+        <h1 className='heading'>Your followers and following post</h1>
+          {
+          !feedData?.posts?.length ? <h3 className='heading2'>No Post Found</h3> : feedData?.posts?.map(post=>  <Post key={post._id} post={post} />)}
         </div>
         <div className="right-part">
           <div className="following">
