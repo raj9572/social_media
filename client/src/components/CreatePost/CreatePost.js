@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+/* eslint-disable no-unused-vars */
+import { useState } from 'react'
 import Avatar from '../Avatar/Avatar'
 import './createPost.scss'
-import backgroundDummyImg from '../../assests/backgroundImg.jpeg'
 import { BsCardImage } from 'react-icons/bs'
 import { axiosClient } from '../../Utils/axiosClient'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '../../redux/Slice/appConfigSlice'
 import { getUserProfile } from '../../redux/Slice/postsSlice'
 const CreatePost = () => {
     const myProfile = useSelector(state => state.appConfigReducer.myProfile)

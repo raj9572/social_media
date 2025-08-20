@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios'
 import { getItem, KEY_ACCESS_TOKEN, removeItem, setItem } from './localStorageManager'
 import store from '../redux/store'
@@ -57,7 +58,7 @@ axiosClient.interceptors.response.use(
             }).get(`${process.env.REACT_APP_SERVER_BASE_URL}/auth/refresh`)
 
             if (response.data.status === 'ok') {
-                console.log("'token'",response.data.result.accessToken)
+                // console.log("'token'",response.data.result.accessToken)
                 setItem(KEY_ACCESS_TOKEN,response.data.result.accessToken)
                 originalRequest.headers['Authorization'] =`Bearer ${response.data.result.accessToken}`
                 return axios(originalRequest)

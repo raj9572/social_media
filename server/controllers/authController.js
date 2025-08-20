@@ -64,24 +64,19 @@ const loginController = async (req, res) => {
 
 
 
-       console.log('aaya',isMatch)
         const accessToken = generateAccessToken({ _id: user._id, email: user.email })
         const refreshToken = generateRefreshToken({ _id: user._id, email: user.email })
 
-        console.log('refreshToken',refreshToken)
-        console.log('accessToken',accessToken)
+       
         res.cookie('jwt', refreshToken, {
             httpOnly: true,
             secure: true
         })
-        console.log('aaya ')
         // return res.json({ accessToken });
         return res.send(success(200, { accessToken }))
 
-
     } catch (err) {
         // res.status(400).send({ error })
-        console.log(err)
         return res.send(error(500, error))
     }
 }
@@ -134,14 +129,14 @@ const logoutController = async (req, res) => {
 
 const generateAccessToken = (data) => {
     const token = jwt.sign(data, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-        expiresIn: '30s'
+        expiresIn: process.env.ACCESS_TOKEN_EXPIRE_TIME
     })
     return token
 }
 
 const generateRefreshToken = (data) => {
     const token = jwt.sign(data, process.env.REFRESE_TOKEN_PRIVATE_KEY, {
-        expiresIn: '1y'
+        expiresIn: process.env.REFRESE_TOKEN_EXPIRE_TIME
     })
     return token
 }
