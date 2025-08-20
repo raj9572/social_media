@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 const connectToMongo = require('./dbConnect')
 const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
@@ -18,8 +18,15 @@ app.use(morgan('common'))
 app.use(cookieParser())
 // https://social-media-client-blue-ten.vercel.app/
 app.use(cors({
-  origin: ['http://localhost:3000',"https://social-media-zl52.onrender.com/"],
-  credentials: true
+  origin: [process.env.CLIENT_BASE_URL,'http://localhost:3000'],
+  allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "Cache-Control",
+      "Expires",
+      "Pragma",
+    ],
+    credentials: true,
 }))
 
 
