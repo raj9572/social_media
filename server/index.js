@@ -7,7 +7,6 @@ const morgan = require('morgan')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const cloudinary = require('cloudinary').v2;
-const bodyParser = require('body-parser')
 const { estimatedDocumentCount } = require('./models/Comment')
 
 // middlewares
